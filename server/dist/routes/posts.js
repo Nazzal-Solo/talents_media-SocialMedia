@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const postsController_1 = require("../controllers/postsController");
+const auth_1 = require("../middlewares/auth");
+const middlewares_1 = require("../middlewares");
+const router = (0, express_1.Router)();
+const postsController = new postsController_1.PostsController();
+router.post('/', auth_1.authGuard, middlewares_1.generalRateLimit, postsController.createPost.bind(postsController));
+router.get('/feed', auth_1.authGuard, postsController.getFeed.bind(postsController));
+router.get('/explore', auth_1.optionalAuth, postsController.getExplore.bind(postsController));
+router.get('/trending/hashtags', auth_1.optionalAuth, postsController.getTrendingHashtags.bind(postsController));
+router.get('/search', auth_1.optionalAuth, postsController.searchPosts.bind(postsController));
+router.get('/:id', auth_1.optionalAuth, postsController.getPost.bind(postsController));
+router.get('/user/:username', auth_1.optionalAuth, postsController.getUserPosts.bind(postsController));
+router.patch('/:id', auth_1.authGuard, postsController.updatePost.bind(postsController));
+router.delete('/:id', auth_1.authGuard, postsController.deletePost.bind(postsController));
+router.post('/:id/hide', auth_1.authGuard, postsController.hidePost.bind(postsController));
+router.post('/:id/report', auth_1.authGuard, postsController.reportPost.bind(postsController));
+router.post('/:id/not-interested', auth_1.authGuard, postsController.markNotInterested.bind(postsController));
+exports.default = router;
+//# sourceMappingURL=posts.js.map

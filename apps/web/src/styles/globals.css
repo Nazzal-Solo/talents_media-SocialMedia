@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force dark theme */
+* {
+  color-scheme: dark !important;
+}
+
+html, body {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/* Midnight Aura Background */
+.animated-gradient {
+  background: radial-gradient(circle at top, #020b26, #020617) !important;
+  min-height: 100vh;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass Morphism Effects - Midnight Aura */
+.glass-card {
+  background: rgba(11, 17, 32, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(31, 41, 55, 0.6) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Neon Glow Effects - Very Subtle */
+.neon-glow {
+  box-shadow: 0 0 2px rgba(124, 92, 252, 0.3) !important;
+  transition: box-shadow 0.3s ease !important;
+}
+
+/* Fix for unwanted background-color transitions on hover */
+/* Elements with explicit hover backgrounds will still transition properly via Tailwind classes */
+
+/* Gradient Text - Midnight Aura */
+.gradient-text {
+  background: linear-gradient(90deg, #ec4899, #f97316, #22d3ee) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Animations for Reactions Menu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Shimmer animation for skeleton loaders */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Skeleton loader with shimmer effect */
+.skeleton-shimmer {
+  position: relative !important;
+  animation: skeleton-pulse 2s ease-in-out infinite !important;
+  min-height: 400px !important;
+}
+
+.skeleton-shimmer::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  ) !important;
+  animation: shimmer 1.5s ease-in-out infinite !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
